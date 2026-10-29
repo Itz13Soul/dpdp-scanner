@@ -1,13 +1,21 @@
-# Case study: DPDP Scanner
+# DPDP Scanner: case study
 
-**Problem.** Most DPDP tools are questionnaires. A founder answers what they believe, while the site may load trackers before consent or collect phone numbers with no notice.
+**Problem.** The DPDP Act's notice and consent duties start on 13 May 2027. Small sites do not know what their pages do before a visitor consents.
 
-**What I built.** A scanner that loads the live site in a headless browser and records what fires before any click, then maps findings to DPDP Act sections and Rules and generates fix code. It runs inside a Vercel function and stores nothing.
+**Existing tools.** Saral Privacy, Sprinto and DPDP Core are questionnaires or platforms. Cookiebot and Blacklight scan trackers but do not map them to the Act.
 
-**Decisions.** Rules, not an AI model, decide findings, so a scan repeats exactly and each finding can quote its clause. The clause text was checked against the Act on India Code. The scanner refuses private network targets. Results say "observed", never "compliant".
+**What I built.** Enter an address. A headless browser loads the live page, clicks nothing, and records third-party services contacted, cookies set, forms collecting personal data and whether a notice shows, and the privacy policy. Each finding quotes the relevant Section or Rule. The scan ends with a fix pack: consent-banner code, notice template, form notice and a prioritised list.
 
-**Result.** On 12 synthetic pages: 15 of 15 expected findings, no false alarms. The set is mine and two rules were adjusted after the first run, so this is a design check, not real-world accuracy.
+**Decisions.**
+- Rules decide findings, not an AI model, so results repeat exactly.
+- Private and internal network addresses are refused, including inside the browser.
+- Nothing is stored; no account.
+- Every result says: not legal advice, a probability, not proof.
 
-**Finding about the law.** The Act's main duties start on 13 May 2027, so the product is positioned as a readiness check.
+**Evidence.** 12 synthetic pages with known issues: 15 of 15 expected findings found, no false alarms, 12 of 12 pages matched. Two rules were adjusted after the first run missed items, and the pages are mine, so this shows the rules work as designed and says nothing about real-site accuracy.
 
-**Limits and next.** One page, keyword-based policy checks. Next: hand-verify on 20 real sites with permission, add weekly re-scans with email alerts.
+**Limits.** One page load, no clicking, nothing behind login. The tracker list is curated, not exhaustive. Policy checks use keywords. Sites that block automated visitors cannot be scanned.
+
+**Next.** Hand-verify about 20 real sites with owners' permission.
+
+Live: https://dpdp-scanner-seven.vercel.app

@@ -38,3 +38,5 @@ For local scans, set `CHROMIUM_PATH` to a Chrome or Chromium binary. Never set `
 Copyright (c) 2026 Divyansh Srivastava. All rights reserved. See LICENSE.
 
 Run `npm run eval` to regenerate the accuracy figures.
+
+Read the one-page [case study](CASE_STUDY.md).
