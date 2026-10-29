@@ -24,7 +24,7 @@ function Copy({ text, label }: { text: string; label: string }) {
           setDone(false);
         }
       }}
-      className="rounded-md border border-white/10 px-2 py-1 text-xs text-zinc-300 transition-colors hover:border-teal-300 hover:text-teal-200"
+      className="rounded-md border border-white/10 px-2 py-1 text-xs text-zinc-300 transition-colors hover:border-indigo-300 hover:text-indigo-200"
     >
       {done ? "Copied" : label}
     </button>
@@ -55,7 +55,7 @@ function FindingCard({ f }: { f: Finding }) {
           ))}
         </div>
       ) : null}
-      <p className="mt-2 text-xs text-teal-200">Fix: {f.fix}</p>
+      <p className="mt-2 text-xs text-indigo-200">Fix: {f.fix}</p>
     </li>
   );
 }
@@ -95,11 +95,11 @@ export default function Scanner() {
           onChange={(e) => setUrl(e.target.value)}
           placeholder="yourstartup.in"
           aria-label="Website address"
-          className="flex-1 rounded-xl border border-white/15 bg-white/[0.04] px-4 py-3 text-base outline-none focus:border-teal-300"
+          className="flex-1 rounded-xl border border-white/15 bg-white/[0.04] px-4 py-3 text-base outline-none focus:border-indigo-300"
         />
         <button
           disabled={busy || !url.trim()}
-          className="rounded-xl bg-teal-400 px-6 py-3 font-semibold text-zinc-950 transition-opacity disabled:opacity-40"
+          className="rounded-xl bg-indigo-400 px-6 py-3 font-semibold text-zinc-950 transition-opacity disabled:opacity-40"
         >
           {busy ? "Scanning, about 30 seconds..." : "Scan my site"}
         </button>
@@ -118,7 +118,7 @@ export default function Scanner() {
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <div className="text-xs uppercase tracking-wide text-zinc-500">Readiness indicator for {new URL(res.finalUrl).hostname}</div>
               <div className="mt-1 flex items-baseline gap-3">
-                <span className="font-mono text-5xl text-teal-300">{res.score}</span>
+                <span className="font-mono text-5xl text-indigo-300">{res.score}</span>
                 <span className="text-zinc-300">/ 100 · {res.band}</span>
               </div>
               <p className="mt-2 text-sm text-zinc-400">
@@ -164,7 +164,7 @@ export default function Scanner() {
             <p className="mt-1 text-sm text-zinc-400">Templates to adapt. Have a lawyer review the notice before you publish it.</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {([["banner", "Consent banner code"], ["notice", "Notice template"], ["form", "Form notice"], ["actions", "Action list"]] as const).map(([k, l]) => (
-                <button key={k} onClick={() => setTab(k)} className={`rounded-full border px-3 py-1 text-sm ${tab === k ? "border-teal-400 bg-teal-400/10 text-teal-200" : "border-white/10 text-zinc-400 hover:text-zinc-100"}`}>
+                <button key={k} onClick={() => setTab(k)} className={`rounded-full border px-3 py-1 text-sm ${tab === k ? "border-indigo-400 bg-indigo-400/10 text-indigo-200" : "border-white/10 text-zinc-400 hover:text-zinc-100"}`}>
                   {l}
                 </button>
               ))}
