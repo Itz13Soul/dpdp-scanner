@@ -1,16 +1,41 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const LINKS = [{"href":"/method","label":"Method and accuracy"}];
 
 export default function Nav() {
+  const path = usePathname();
   return (
-    <header className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-y-2 px-4 py-5">
-      <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-teal-400 shadow-[0_0_12px_2px_rgba(45,212,191,0.7)]" />
-        DPDP Scanner
-      </Link>
-      <nav aria-label="Primary" className="flex flex-wrap items-center gap-x-5 text-sm text-zinc-300">
-        <Link href="/" className="transition-colors hover:text-zinc-100">Scan</Link>
-        <Link href="/method" className="transition-colors hover:text-zinc-100">Method and accuracy</Link>
-      </nav>
+    <header className="sticky top-0 z-40 border-b border-white/[0.06] backdrop-blur-xl" style={{ background: "#060716cc" }}>
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-y-2 px-4 py-3">
+        <Link href="/" className="font-display flex items-center gap-2.5 text-lg font-semibold">
+          <span className="relative flex h-3 w-3 items-center justify-center">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400/50 motion-reduce:animate-none" />
+            <span className="relative inline-block h-2 w-2 rounded-full bg-indigo-300" />
+          </span>
+          DPDP Scanner
+        </Link>
+        <nav aria-label="Primary" className="flex flex-wrap items-center gap-1 text-sm">
+          {LINKS.map((l) => {
+            const active = l.href === "/" ? path === "/" : path === l.href || path.startsWith(l.href + "/");
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? "page" : undefined}
+                className={`rounded-full px-3 py-1.5 transition-colors ${active ? "bg-white/10 text-white" : "text-zinc-300 hover:bg-white/5 hover:text-white"}`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+          <Link href="/#scan" className="ml-2 rounded-full bg-indigo-300 px-4 py-1.5 font-semibold text-zinc-950 transition hover:bg-indigo-200">
+            Scan a site
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }
