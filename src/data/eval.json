@@ -1,0 +1,143 @@
+{
+  "sites": 12,
+  "labels": 15,
+  "tp": 15,
+  "fp": 0,
+  "fn": 0,
+  "tn": 165,
+  "recall": 1,
+  "precision": 1,
+  "exactMatchSites": 12,
+  "rows": [
+    {
+      "id": "f01",
+      "description": "Clean: banner, no trackers, notice form, full policy",
+      "expected": [],
+      "got": [],
+      "ok": true
+    },
+    {
+      "id": "f02",
+      "description": "Analytics fires with an own banner present",
+      "expected": [
+        "trackers-before-consent",
+        "cookies-before-consent"
+      ],
+      "got": [
+        "trackers-before-consent",
+        "cookies-before-consent"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f03",
+      "description": "Meta pixel and Hotjar, no banner",
+      "expected": [
+        "trackers-before-consent",
+        "cookies-before-consent",
+        "no-consent-mechanism"
+      ],
+      "got": [
+        "trackers-before-consent",
+        "cookies-before-consent",
+        "no-consent-mechanism"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f04",
+      "description": "Consent platform script present but analytics still fires",
+      "expected": [
+        "trackers-before-consent",
+        "cookies-before-consent"
+      ],
+      "got": [
+        "trackers-before-consent",
+        "cookies-before-consent"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f05",
+      "description": "Contact form with no notice",
+      "expected": [
+        "form-no-notice"
+      ],
+      "got": [
+        "form-no-notice"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f06",
+      "description": "Form with only a policy link, no consent wording",
+      "expected": [
+        "form-weak-consent"
+      ],
+      "got": [
+        "form-weak-consent"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f07",
+      "description": "No privacy policy link anywhere",
+      "expected": [
+        "no-policy-link"
+      ],
+      "got": [
+        "no-policy-link"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f08",
+      "description": "Policy lacks grievance, contact, board and retention",
+      "expected": [
+        "policy-grievance",
+        "policy-contact",
+        "policy-board",
+        "policy-retention"
+      ],
+      "got": [
+        "policy-grievance",
+        "policy-contact",
+        "policy-retention",
+        "policy-board"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f09",
+      "description": "Policy page too short to read",
+      "expected": [
+        "policy-unreadable"
+      ],
+      "got": [
+        "policy-unreadable"
+      ],
+      "ok": true
+    },
+    {
+      "id": "f10",
+      "description": "Footer newsletter form with consent line",
+      "expected": [],
+      "got": [],
+      "ok": true
+    },
+    {
+      "id": "f11",
+      "description": "Search form only, no personal data",
+      "expected": [],
+      "got": [],
+      "ok": true
+    },
+    {
+      "id": "f12",
+      "description": "Phone form with the notice in a paragraph above it",
+      "expected": [],
+      "got": [],
+      "ok": true
+    }
+  ]
+}
