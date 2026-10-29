@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
   agentRules: false,
   serverExternalPackages: ["@sparticuz/chromium", "playwright-core"],
   outputFileTracingIncludes: {
-    "/api/scan": ["./node_modules/@sparticuz/chromium/bin/**"],
+    "/api/scan": [
+      "./node_modules/@sparticuz/chromium/bin/**",
+      "./node_modules/playwright-core/*.json",
+      "./node_modules/playwright-core/lib/**",
+    ],
   },
   turbopack: {
     rules: {

@@ -1,10 +1,11 @@
-import { chromium as pw, type Browser, type Page } from "playwright-core";
+import type { Browser, Page } from "playwright-core";
 import type { Capture, FormRecord, RequestRecord } from "./types";
 import { hostIsPublic, validateTarget } from "./target";
 
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 DPDPScanner/0.1";
 
 async function launch(): Promise<Browser> {
+  const pw = (await import("playwright-core")).chromium;
   if (process.env.CHROMIUM_PATH) {
     return pw.launch({ executablePath: process.env.CHROMIUM_PATH, headless: true, args: ["--no-sandbox"] });
   }
