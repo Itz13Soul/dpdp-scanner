@@ -36,3 +36,5 @@ npm run dev
 For local scans, set `CHROMIUM_PATH` to a Chrome or Chromium binary. Never set `ALLOW_PRIVATE_TARGETS` on a public deployment.
 
 Copyright (c) 2026 Divyansh Srivastava. All rights reserved. See LICENSE.
+
+Run `npm run eval` to regenerate the accuracy figures.
