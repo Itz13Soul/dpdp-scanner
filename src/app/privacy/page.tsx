@@ -6,7 +6,7 @@ const ITEMS = [
   "The URL you enter is opened in a headless browser run by this site, and the page is analysed for trackers, cookies, forms and a privacy notice. Scan results are not saved.",
   "Your IP address is held in memory for a short time only to apply a fair-use limit of a few scans per hour.",
   "No visitor input is written to a database.",
-  "Page views are counted with Vercel Web Analytics, which is cookieless and reports aggregate traffic only. No advertising or cross-site tracking is used."
+  "Page views are counted with Vercel Web Analytics, which is cookieless and reports aggregate traffic only. If you accept the analytics banner, Google Analytics 4 also records anonymised visits and which features are used (for example, that a check was run, never what you type) and sets cookies. Nothing loads if you decline, and you can change your choice with Analytics settings in the footer. No advertising is used."
 ];
 
 export default function PrivacyPage() {

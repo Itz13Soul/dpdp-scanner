@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "../lib/track";
 import { useState } from "react";
 import type { Finding, ScanResult } from "../lib/types";
 import RadarLoader from "./RadarLoader";
@@ -18,6 +19,7 @@ function Copy({ text, label }: { text: string; label: string }) {
       onClick={async () => {
         try {
           await navigator.clipboard.writeText(text);
+          track("fixpack_copied");
           setDone(true);
           setTimeout(() => setDone(false), 1500);
         } catch {
@@ -73,11 +75,12 @@ export default function Scanner() {
     setBusy(true);
     setError("");
     setRes(null);
+    track("scan_started");
     try {
       const r = await fetch("/api/scan", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ url }) });
       const j = await r.json();
-      if (!r.ok) setError(j.error ?? "The scan could not be completed.");
-      else setRes(j as ScanResult);
+      if (!r.ok) { setError(j.error ?? "The scan could not be completed."); track("scan_error", { status: r.status }); }
+      else { setRes(j as ScanResult); track("scan_completed", { findings: Array.isArray((j as ScanResult).findings) ? (j as ScanResult).findings.length : undefined }); }
     } catch {
       setError("The scan could not be completed. Please try again.");
     }
